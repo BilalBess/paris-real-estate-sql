@@ -1,5 +1,7 @@
 # Paris Real Estate Prices with SQL (DVF 2023)
 
+[![CI](https://github.com/BilalBess/paris-real-estate-sql/actions/workflows/ci.yml/badge.svg)](https://github.com/BilalBess/paris-real-estate-sql/actions/workflows/ci.yml)
+
 SQL-first analysis of **26,866 apartment sales in Paris in 2023**, using DuckDB.
 The goal is to show that I can clean a messy real-world dataset in SQL and answer business questions with joins, CTEs and window functions.
 
@@ -49,6 +51,13 @@ python src/download_data.py
 python src/run_analysis.py
 ```
 Results are saved in `reports/` (csv tables and figures). You can also open the `.sql` files in DuckDB directly.
+
+## Tests
+```bash
+pip install pytest
+pytest -q
+```
+The tests cover the SQL cleaning rules on a tiny fake DVF file (what is kept, what is removed) and the ranking queries. They run on every push with GitHub Actions (`.github/workflows/ci.yml`: lint with ruff, then pytest).
 
 ## Skills shown
 SQL (CTE, window functions, `PARTITION BY`, `LAG`, quantiles), data cleaning, DuckDB, matplotlib, open data.
